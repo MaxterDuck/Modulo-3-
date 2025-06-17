@@ -1,0 +1,831 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Taller practico</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="21425e9c-cad5-80bb-96e5-eb31567f7163" class="page sans"><header><h1 class="page-title">Taller practico</h1><p class="page-description"></p></header><div class="page-body"><p id="21425e9c-cad5-8071-a18c-e1e335ee151d" class="">
+</p><h2 id="21425e9c-cad5-80e4-b7dc-eafdc5f0a633" class="">Parte 1: Explorando JavaScript</h2><p id="21425e9c-cad5-80f0-9c3d-d855cefba01a" class=""><strong>1.1 </strong>Explica con tus palabras qué es JavaScript y en qué se diferencia<br/>de HTML y CSS.<br/></p><p id="21425e9c-cad5-80d1-99cf-df178e1b39d2" class=""><strong>R// </strong>Javascript se diferencia de HTML Y CSS porque?<br/>Javascript es la funcionalidad de la pagina en cambio HTML es el<br/>esqueleto de la pagina y CSS es lo visual de la pagina o en si el<br/>maquillaje de esta.<br/></p><p id="21425e9c-cad5-8002-9f2a-ef9449615c2f" class=""><strong>1.2</strong> Enumera al menos tres características principales de JavaScript.</p><p id="21425e9c-cad5-809f-8985-f1e8ae5a4957" class=""><strong>R//</strong></p><ul id="21425e9c-cad5-803e-b555-fef46e0f8781" class="bulleted-list"><li style="list-style-type:disc">No necesita ser compilado para ejecutarse.</li></ul><ul id="21425e9c-cad5-804a-a4fa-eb9900873b21" class="bulleted-list"><li style="list-style-type:disc">No tiene un tipo de dato definido, puede cambiar a medida que el codigo se va escribiendo.</li></ul><ul id="21425e9c-cad5-80aa-a66a-f4e0f315c95c" class="bulleted-list"><li style="list-style-type:disc">Es un lenguaje de programacion de alto nivel, Esto significa que es facil de aprender y usar.</li></ul><p id="21425e9c-cad5-803f-bb49-cb55eb0145c3" class=""><strong>1.3</strong> ¿Qué significa que JavaScript sea un lenguaje &quot;interpretado&quot; y &quot;basado en eventos&quot;?</p><p id="21425e9c-cad5-8021-95ca-e23f11d06fb5" class="">Significa que el codigo se ejecuta directamente desde el navegador o el motor de javascript sin necesidad de compilacion previa.</p><h2 id="21425e9c-cad5-801e-9c69-c055a1160933" class="">Parte 2: Variables y Tipos de Datos</h2><p id="21425e9c-cad5-804a-a02a-c82d092aefb9" class=""><strong>2.1 </strong>Declara una variable <code>nombre</code> y asígnale tu nombre. Luego, muestra un saludo en la consola que diga &quot;Hola, [nombre]&quot;.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-809b-84c1-d98f1dfc5ade" class="code"><code class="language-JavaScript">let Nombre = &quot;Tomas&quot;; 
+console.log (&quot;Hola&quot;,Nombre)</code></pre><p id="21425e9c-cad5-8035-9d96-fa89805ee2f2" class=""><strong>2.2</strong> Crea tres variables: una con un número entero, otra con un número decimal y otra con una cadena de texto.<br/>Muestra cada una en la consola usando <br/><code>console.log()</code>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-8012-8ed9-f4aa8a976ae4" class="code"><code class="language-JavaScript">const numeroEntero = 10;
+let numeroDecimal = 2.19;
+const textoPrueba = &quot;Hi this is my test&quot;
+console.log (numeroEntero)
+console.log (numeroDecimal)
+console.log (textoPrueba)</code></pre><p id="21425e9c-cad5-8075-86d6-f7904bf3d4b9" class="">
+</p><p id="21425e9c-cad5-806c-a64d-e2e3af310909" class=""><strong>2.3</strong> Declara una constante llamada <code>PI </code>con el valor 3.1416. Intenta cambiar su valor y observa qué sucede.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80ad-beee-c0d5693781aa" class="code"><code class="language-JavaScript">var PI = &quot;3.1416.&quot;;
+PI = &quot;10.10100&quot;;
+console.log (PI)</code></pre><p id="21425e9c-cad5-807b-96e3-d87b3a54816b" class=""><strong>2.4</strong> Declara una variable sin asignarle valor. Muestra en consola qué contiene.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80a5-8401-fffc27d6bd47" class="code"><code class="language-JavaScript">var PI = (&quot;&quot;);
+console.log (PI)
+
+
+</code></pre><p id="21425e9c-cad5-80e4-b7e2-d3227421b31d" class=""><strong>2.5</strong> Crea una variable con valor <code>null </code>y otra con un valor booleano. Muestra ambos en consola.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80a7-a31b-ecc9f16be8b5" class="code"><code class="language-JavaScript">var numFalse = null;
+let estaLogueado = true;
+const esAdmin = false;
+console.log (numFalse)
+console.log (estaLogueado)
+console.log (esAdmin)</code></pre><p id="21425e9c-cad5-80e5-90d7-f3fe6db82201" class="">
+</p><h2 id="21425e9c-cad5-80a8-becf-c85b7e7483ae" class=""><strong>Parte 3: Entrada y Salida de Datos</strong></h2><p id="21425e9c-cad5-80bd-b69f-e7ee26f9d123" class=""><strong>3.1</strong> Usa <code>prompt()</code> para pedirle al usuario su edad y guárdala en una variable. Luego, muestra en consola un mensaje que diga &quot;Tienes [edad] años&quot;.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80ea-a5ff-d3951757e1df" class="code"><code class="language-JavaScript">let miVariable = prompt(&quot;Por favor, ingresa tu nombre:&quot;);
+console.log (miVariable)</code></pre><p id="21425e9c-cad5-8041-8a5d-f0adfda3285a" class="">
+</p><p id="21425e9c-cad5-80ad-9244-c528f84e7e69" class=""><strong>3.2</strong> Usa <code>alert()</code> para mostrar un mensaje de bienvenida.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80c2-9d46-dd4ebbc16d08" class="code"><code class="language-JavaScript">alert(&quot;BIENVENIDO A MI PAGINA!&quot;)</code></pre><p id="21425e9c-cad5-8009-9711-f49d35c3a299" class=""><strong>3.3</strong> Usa <code>confirm()</code> para preguntar al usuario si desea continuar. Muestra en consola el valor que devuelve esta función.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21425e9c-cad5-80b4-b47a-eb76b9f52a40" class="code"><code class="language-JavaScript">confirm(&quot;Deseas continuar a mi pagina?&quot;)
+console.log (confirm)
+//Esto es lo que muestra el valor que devuelve esta funcion//
+function confirm()
+</code></pre><h2 id="21525e9c-cad5-807f-a013-ff6f379670a1" class=""><strong>Parte 4: Operadores</strong></h2><p id="21525e9c-cad5-80a5-9c1b-f85f35f14002" class=""><strong>4.1</strong> Declara dos variables numéricas. Realiza y muestra los resultados de las siguientes operaciones: suma, resta, multiplicación, división y módulo.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8074-b8b6-d4c8358606cc" class="code"><code class="language-JavaScript">/suma//
+var suma = num1 + num2;
+console.log (suma)
+
+//resta//
+var resta = num2 - num1;
+console.log (resta)
+
+//multiplicacion//
+let multiplicacion = num1 * num2;
+console.log (multiplicacion)
+
+//division//
+let division = num1 / num2;
+console.log (division)
+
+//residuo//
+let residuo = num1 % num2;
+console.log (residuo)
+</code></pre><p id="21525e9c-cad5-806b-9dfe-fcdc36c806f7" class=""><strong>4.2</strong> Declara dos variables con cadenas de texto y únelas en una nueva variable usando el operador de concatenación.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-802d-a062-d812f1fa4663" class="code"><code class="language-JavaScript">var text1 = (&quot;Hola mi nombre es Tomas&quot;)
+var text2 = (&quot; Hola mi nombre es Juanda&quot;)
+
+
+var textunited = text1 + text2
+
+console.log (textunited)</code></pre><p id="21525e9c-cad5-80d7-8693-d5dd8e26fc2e" class=""><strong>4.3</strong> Evalúa y muestra en consola el resultado de las siguientes comparaciones:</p><ul id="21525e9c-cad5-8082-b7fc-fb17179a78b5" class="bulleted-list"><li style="list-style-type:disc"><code>5 == &quot;5&quot;</code></li></ul><ul id="21525e9c-cad5-809f-a34c-da9659ed97ba" class="bulleted-list"><li style="list-style-type:disc"><code>5 === &quot;5&quot;</code></li></ul><ul id="21525e9c-cad5-8008-a8e0-dc2bd386ae01" class="bulleted-list"><li style="list-style-type:disc"><code>true &amp;&amp; false</code></li></ul><ul id="21525e9c-cad5-8062-8563-e203b0ef87f2" class="bulleted-list"><li style="list-style-type:disc"><code>false || true</code></li></ul><ul id="21525e9c-cad5-80a8-9000-ee86fd40a16d" class="bulleted-list"><li style="list-style-type:disc"><code>!true</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8040-b96e-ea962f909763" class="code"><code class="language-JavaScript">var dif = 5 == 5;
+console.log (dif)
+
+var strict_Equality = 5 === 5;
+console.log (strict_Equality)
+
+var boolean = true &amp;&amp; false;
+console.log (boolean)
+
+var operador_Logico = false || true
+console.log (operador_Logico)
+
+var not = !true;
+console.log (not)
+
+//mensajes que salen en consola//
+
+(dif)true 
+(strict_Equality)true 
+(boolean)false 
+(operador_Logico)true 
+(not)false</code></pre><h2 id="21525e9c-cad5-806e-8505-f0b4469dafed" class=""><strong>Parte 5: Condicionales</strong></h2><p id="21525e9c-cad5-80b7-8ea8-e454b894c990" class=""><strong>5.1</strong> Crea un programa que pida al usuario un número y muestre en consola si es mayor, menor o igual a 10.</p><div id="21525e9c-cad5-80b7-affc-f73ea74b3112" class="column-list"><div id="21525e9c-cad5-808b-a584-e9a47a9617cd" style="width:93.75%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-80de-b8dd-de1b18469e0a" class="code"><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Ex1&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./styles/style.css&quot;&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Mayor o menor a 10 😄&lt;/h1&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+&lt;script src=&quot;./script.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre></div><div id="21525e9c-cad5-80f6-8eed-c2fbfbb11fde" style="width:6.25%" class="column"><p id="21525e9c-cad5-80d5-9014-d0783a98e7aa" class="">
+</p></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-80e4-8036-c99e5858a287" class="code"><code class="language-JavaScript">let edad = prompt(&quot;Ingrese su edad&quot;);
+
+if (edad &gt; 10) {
+    alert(&quot;El numero es mayor que 10&quot;);
+} else if (edad == 10) {
+    alert(&quot;El numero es igual a 10&quot;);
+} else if (edad &lt; 10) {
+    alert(&quot;El numero es menor que 10&quot;);
+}
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8098-9f12-d914c9f02882" class="code"><code class="language-CSS">header {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(123, 255, 0);
+}
+
+body {
+    margin: 0%;
+}
+
+h1 {
+    font-family:Arial, Helvetica, sans-serif;
+}
+</code></pre><p id="21525e9c-cad5-8008-9fc8-e7df282b916b" class="">
+</p><p id="21525e9c-cad5-80aa-bd9c-d7186523851e" class=""><strong>5.2</strong> Crea un programa que solicite el nombre de un usuario y compare si se llama &quot;Admin&quot;. Si es así, muestra un mensaje de bienvenida especial, de lo contrario, un mensaje genérico.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-80d5-8ef1-fb9688be30df" class="code"><code class="language-JavaScript">let name = prompt(&quot;Ingrese su nombre:&quot;);
+
+if (name === &quot;Admin&quot;) {
+    alert(&quot;Bienvenido al programa!&quot;);
+} else {
+    alert(&quot;No eres bienvenido aquí!&quot;);
+}</code></pre><p id="21525e9c-cad5-80a5-af2f-c964194006a2" class="">
+</p><p id="21525e9c-cad5-8058-a753-c1afe1cb87f3" class=""><strong>5.3</strong> Usa el operador ternario para mostrar si un número ingresado es par o impar.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8078-a656-c1c2f59606de" class="code"><code class="language-JavaScript">let numero = prompt(&quot;Ingrese un número:&quot;);
+let par_o_impar = numero % 2 === 0 ? &quot;Par&quot; : &quot;Impar&quot;;
+
+if (par_o_impar === &quot;Par&quot;) {
+    alert(&quot;El número es par&quot;)
+} else {
+    alert(&quot;El número no es par&quot;)
+}</code></pre><h2 id="21525e9c-cad5-80f9-81b7-d4c832a623ae" class=""><strong>Parte 6: Consola del Navegador</strong></h2><p id="21525e9c-cad5-8082-9269-cb45594deced" class=""><strong>6.1</strong> Muestra diferentes tipos de mensajes en la consola:</p><ul id="21525e9c-cad5-80fc-a839-c7677fc5a480" class="bulleted-list"><li style="list-style-type:disc">Un mensaje informativo (<code>console.info</code>)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-80d3-837a-f9458aa9bb9e" class="code"><code class="language-JavaScript">console.info(&quot;This message is about info&quot;)</code></pre><ul id="21525e9c-cad5-805a-b621-f334559e8af0" class="bulleted-list"><li style="list-style-type:disc">Un mensaje de advertencia (<code>console.warn</code>)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-80f4-9e9a-ec56a6632857" class="code"><code class="language-JavaScript">console.warn(&quot;This is a error not so slight&quot;)</code></pre><ul id="21525e9c-cad5-8039-81c6-f6d218a373ea" class="bulleted-list"><li style="list-style-type:disc">Un mensaje de error (<code>console.error</code>)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8082-9404-cf97a36bca2c" class="code"><code class="language-JavaScript">console.error(&quot;This error is about text for Javascript&quot;)</code></pre><ul id="21525e9c-cad5-8068-8dd0-f2bc6119f48e" class="bulleted-list"><li style="list-style-type:disc">Un grupo de mensajes (<code>console.group</code> y <code>console.groupEnd</code>)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-803a-8338-caf56e452673" class="code"><code class="language-JavaScript">console.group(&quot;This is my first group about Javascript&quot;)
+console.log(&quot;Pepe 1&quot;)
+console.log(&quot;Pepe 2&quot;)
+console.log(&quot;Pepe 3&quot;)
+console.groupEnd()</code></pre><ul id="21525e9c-cad5-8077-8af9-e03889021e64" class="bulleted-list"><li style="list-style-type:disc">El tiempo que tarda un bloque de código en ejecutarse (<code>console.time</code> y <code>console.timeEnd</code>)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8045-b5e7-c5c5fc4ecc39" class="code"><code class="language-JavaScript">console.time(&#x27;Time&#x27;);
+console.info(&#x27;Testing&#x27;)
+console.timeEnd(&#x27;Time&#x27;);</code></pre><h2 id="21525e9c-cad5-8007-80bd-f6593181251e" class=""><strong>Parte 7: Comentarios</strong></h2><p id="21525e9c-cad5-803b-b2d3-ded4533a0c3b" class=""><strong>7.1</strong> Escribe un pequeño bloque de código donde utilices comentarios de una línea y de varias líneas para explicar lo que hace cada parte.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8090-8f1e-ef3a3c030370" class="code"><code class="language-JavaScript">// Este bloque de código pide al usuario su nombre y compara si se llama &quot;admin&quot;
+let name = prompt(&quot;Ingrese su nombre: &quot;);
+
+// Si el nombre es &quot;admin&quot;, muestra un mensaje de bienvenida especial
+if (name === &quot;admin&quot;) {
+    alert(&quot;Bienvenido al programa!&quot;);
+} else {
+    // De lo contrario, muestra un mensaje genérico
+    alert(&quot;No eres bienvenido aquí!&quot;);
+}
+
+</code></pre><h2 id="21525e9c-cad5-80a1-a52a-e2c236df23b3" class=""><strong>Parte 8: Desafío Final</strong></h2><p id="21525e9c-cad5-80a1-b05e-fb6a78415518" class=""><strong>8.1</strong> Crea un archivo HTML y vincúlalo con un archivo <code>.js</code> externo. En ese archivo:</p><ul id="21525e9c-cad5-8007-80f2-c1e266c1f64a" class="bulleted-list"><li style="list-style-type:disc">Declara tres variables: nombre, edad, y ciudad.</li></ul><ul id="21525e9c-cad5-8023-b82f-df215d683532" class="bulleted-list"><li style="list-style-type:disc">Pide al usuario su nombre, edad y ciudad mediante <code>prompt()</code>.</li></ul><ul id="21525e9c-cad5-80f8-9c1b-de816be00e9c" class="bulleted-list"><li style="list-style-type:disc">Muestra esa información formateada en consola con una frase como:<code>&quot;Hola [nombre], tienes [edad] años y vives en [ciudad].&quot;</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21525e9c-cad5-8004-b4da-d6c0d0b21548" class="code"><code class="language-JavaScript">let name = prompt (&quot;Give me your name&quot;)
+let age = prompt (&quot;Give me your age&quot;)
+let city = prompt (&quot;Give me the city you live in&quot;)
+
+alert(`Hola ${name} tienes ${age} años y vives en ${city}.`)
+console.log (`Hola ${name} tienes ${age} años y vives en ${city}.`)
+</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
