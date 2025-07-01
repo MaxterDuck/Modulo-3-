@@ -13,10 +13,6 @@
 - **Totalmente responsivo:** Se adapta perfectamente a computadoras, tablets y móviles.
 
 ---
-
-## 📸 Captura de pantalla
-Demo del Chat
-
 ---
 
 ## 🚀 Instalación y uso
