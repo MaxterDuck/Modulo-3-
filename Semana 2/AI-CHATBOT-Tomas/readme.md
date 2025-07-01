@@ -13,7 +13,6 @@
 - **Totalmente responsivo:** Se adapta perfectamente a computadoras, tablets y móviles.
 
 ---
----
 
 ## 🚀 Instalación y uso
 1. Clona el repositorio o descarga los archivos.
