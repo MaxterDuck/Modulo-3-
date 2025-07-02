@@ -17,9 +17,13 @@ Está pensado para personas que están comenzando, por eso se explican todos los
 ## 📁 Archivos del proyecto
 
 Modulo_3/
+
 └── Semana_2/
+
 ├── db.json # Archivo que simula una base de datos (productos)
+
 ├── gestion_api.js # Script que realiza operaciones CRUD con Fetch API
+
 └── reiniciar_db.js # Script que reinicia los datos de la base a los valores originales
 
 ---
