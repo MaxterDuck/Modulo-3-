@@ -74,6 +74,9 @@ This file overwrites the contents of db.json with the base products:
 
 const fs = require('fs');
 
+```js
+const fs = require('fs');
+
 const initialData = {
   products: [
     { id: 1, name: "Laptop", price: 1200 },
@@ -89,7 +92,7 @@ fs.writeFile('db.json', JSON.stringify(initialData, null, 2), (err) => {
     console.log("✅ Database successfully reset.");
   }
 });
-This is useful if you want to test and start from scratch again.
+
 
 💡 Important Notes
 Do not close the terminal where json-server is running.
