@@ -30,7 +30,7 @@ Modulo_3/
 ## 🔧 Prerequisites
 You need to have the following installed:
 
-1. Node.js and npm
+## 1. Node.js and npm
 You can check if you have them with the following command:
 
 "node -v"
@@ -39,34 +39,35 @@ You can check if you have them with the following command:
 
 If not, download them from: https://nodejs.org/
 
-Step 2: Start the server
-Run this command to start the server, using db.json as a mock database:
-""json-server --watch db.json""
-
-🔁 Leave this command running in the terminal so the server stays active.
-
-
-3. JSON Server
+## 2. JSON Server
 Install JSON Server globally with the following command:
 
 ""npm install -g json-server""
 
+🚀 How to run the project step-by-step
+## Step 1: Go to the project folder
+From the terminal (Ubuntu, WSL, or CMD on Windows):
+cd ~/Modulo_3/Semana_2
+Make sure you're in the folder where db.json and the scripts are located.
 
+## Step 2: Start the server
+Run this command to start the server, using db.json as a mock database:
+json-server --watch db.json
+🔁 Leave this command running in the terminal so the server stays active.
 
-Step 3: Open a new terminal to run scripts
+## Step 3: Open a new terminal to run scripts
 While the server is running, open a new terminal and go to the same project folder.
 
 From that terminal, you can run the following scripts:
 
-Manage products (view, add, edit, delete):
-""node gestion_api.js""
+## Manage products (view, add, edit, delete):
+node gestion_api.js
 
-Reset the database to original products:
-""node reiniciar_db.js""
+## Reset the database to original products:
+node reset_db.js
 
-📄 Content of reiniciar_db.js
+## 📄 Content of reset_db.js
 This file overwrites the contents of db.json with the base products:
-
 const fs = require('fs');
 
 const initialData = {
@@ -92,5 +93,6 @@ Do not close the terminal where json-server is running.
 You can visit http://localhost:3000/products in your browser to view the products in JSON format.
 
 Every time you manually edit db.json, save the file and refresh the browser to see the changes.
+
 
 
