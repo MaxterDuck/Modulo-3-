@@ -99,7 +99,12 @@ fs.writeFile('db.json', JSON.stringify(initialData, null, 2), (err) => {
 
 
 💡 Important Notes Do not close the terminal where json-server is running.
-You can visit http://localhost:3000/products in your browser to view products in JSON format. Or in case its port is not port 3000 you would have to change it to your port Every time you manually edit db.json, save the file and update your browser to see the changes.
+
+You can visit http://localhost:3000/products in your browser to view products in JSON format.
+
+Or in case its port is not port 3000 you would have to change it to your port Every time you manually edit 
+
+db.json, save the file and update your browser to see the changes.
 
 
 
