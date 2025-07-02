@@ -63,10 +63,10 @@ While the server is running, open a new terminal and go to the same project fold
 
 From that terminal, you can run the following scripts:
 
-## Manage products (view, add, edit, delete):
+## Manage products (view, add, edit, delete):(Command)
 node gestion_api.js
 
-## Reset the database to original products:
+## Reset the database to original products: (Command)
 node reset_db.js
 
 ## 📄 Content of reset_db.js
