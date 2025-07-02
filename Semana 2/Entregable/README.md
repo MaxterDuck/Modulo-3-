@@ -43,37 +43,32 @@ Si no los tienes, descárgalos desde: https://nodejs.org/
 
 2. JSON Server
 Instala JSON Server de forma global con el siguiente comando:
-
 npm install -g json-server
+
 🚀 Cómo ejecutar el proyecto paso a paso
+
 Paso 1: Entra a la carpeta del proyecto
 Desde la terminal (Ubuntu, WSL o CMD si estás en Windows):
-
 cd ~/Modulo_3/Semana_2
 Asegúrate de estar en la carpeta donde están db.json y los scripts.
 
 Paso 2: Iniciar el servidor
 Ejecuta este comando para iniciar el servidor que usará db.json como si fuera una base de datos real:
-
-
 json-server --watch db.json
+
 🔁 Este comando debe dejarse corriendo en la terminal para que el servidor funcione.
 
 Paso 3: Abrir una nueva terminal para correr los scripts
 Mientras el servidor está corriendo, abre una nueva terminal y navega a la misma carpeta del proyecto.
-
 Desde esa terminal, puedes ejecutar los siguientes scripts:
 
 Ver productos, crear, editar o eliminar (gestión_api.js)
-
 node gestion_api.js
+
 Reiniciar los datos (reiniciar_db.js)
 Si quieres volver a los productos originales (como estaban al principio):
-
-bash
-Copy
-Edit
 node reiniciar_db.js
+
 📄 Contenido del archivo reiniciar_db.js
 Este archivo sobrescribe el contenido de db.json con los productos base:
 
