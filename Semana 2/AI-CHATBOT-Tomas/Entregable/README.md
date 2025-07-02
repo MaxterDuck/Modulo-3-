@@ -32,12 +32,15 @@ Edit
 
 Asegúrate de tener instalados:
 
-- **Node.js y npm**  
-  Puedes verificarlo con:
-  ```bash
-  node -v
-  npm -v
-JSON Server (global):
+### Node.js y npm
+
+Puedes verificarlo con:
+
+```bash
+node -v
+npm -v
+JSON Server
+Instala JSON Server globalmente con:
 
 bash
 Copy
@@ -54,19 +57,17 @@ bash
 Copy
 Edit
 json-server --watch db.json
-Esto crea un servidor local que puedes visitar en el navegador en:
+Esto crea un servidor local que puedes visitar en el navegador:
 
-bash
-Copy
-Edit
 http://localhost:3000/productos
+
 3️⃣ Abre otra terminal para ejecutar los scripts
-Ejecutar las operaciones CRUD:
+Ejecutar operaciones CRUD
 bash
 Copy
 Edit
 node gestion_api.js
-Reiniciar los datos originales:
+Reiniciar los datos a los valores originales
 bash
 Copy
 Edit
@@ -97,9 +98,9 @@ fs.writeFile('db.json', JSON.stringify(datosIniciales, null, 2), (err) => {
 💡 Consejos importantes
 No cierres la terminal donde corre el servidor (json-server).
 
-Puedes usar http://localhost:3000/productos para ver los datos en JSON.
+Puedes abrir http://localhost:3000/productos en tu navegador para ver los datos en JSON.
 
-Si dañas la base de datos haciendo pruebas, simplemente corre reiniciar_db.js.
+Si haces pruebas que dañan la base, puedes correr reiniciar_db.js para restaurarla.
 
 🧪 ¿Qué se practica con este proyecto?
 Uso de fetch() para hacer solicitudes HTTP (GET, POST, PUT, DELETE)
@@ -110,4 +111,3 @@ Interacción con servidores simulados
 
 Buenas prácticas para organizar un proyecto de JS + API
 
-¡Listo! Ya tienes un entorno completo para practicar el consumo de APIs y manipulación de datos. 🚀
