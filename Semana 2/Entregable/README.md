@@ -22,7 +22,7 @@ Modulo_3/
  
  ├── gestion_api.js – Script that performs CRUD operations using Fetch API
  
- └── reiniciar_db.js – Script that resets the database to original values
+ └── reset_db.js – Script that resets the database to original values
 
 ---
 
