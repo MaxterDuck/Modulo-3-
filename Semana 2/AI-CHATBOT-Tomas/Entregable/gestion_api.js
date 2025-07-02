@@ -82,6 +82,6 @@ function obtenerProductosOrdenados() {
 
 // 🧪 PRUEBAS
 obtenerProductos();
-crearProductoUnico({ nombre: "Tarjeta Grafica RTX 3060", precio: 300 });
+crearProductoUnico({ nombre: "Tarjeta Grafica RTX 3070", precio: 300 });
 actualizarProducto(2, { nombre: "Mouse Logitech", precio: 30 });
-eliminarProducto(1);
+eliminarProducto("db62");
