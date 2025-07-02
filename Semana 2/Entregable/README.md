@@ -1,6 +1,5 @@
 # 🛒 Product Management Project with JavaScript and JSON Server
 In this project, you’ll learn how to simulate an API using a local server and perform CRUD operations (Create, Read, Update, Delete) using modern JavaScript with the Fetch API.
-
 It’s designed for beginners, so all steps are explained from scratch.
 
 ---
