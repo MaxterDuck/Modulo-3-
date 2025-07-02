@@ -1,87 +1,165 @@
-const URL = "http://localhost:3000/productos";
+// product_manager.js
 
-// GET: leer productos
-function obtenerProductos() {
-  fetch(URL)
-    .then(res => res.json())
-    .then(data => console.log("🔍 Productos actuales:", data))
-    .catch(err => console.error("❌ Error al obtener productos:", err));
+const readline = require("readline");
+// Use dynamic import to bring in node-fetch (for use in CommonJS)
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
+
+// URL of the JSON server endpoint
+const URL = "http://localhost:3000/products";
+
+// 📄 Display all products in a formatted table
+async function viewProducts() {
+  try {
+    const res = await fetch(URL);
+    const products = await res.json();
+
+    console.log("\n📋 PRODUCT LIST:");
+    console.log("=".repeat(50));
+    console.table(products, ["id", "name", "price"]);
+  } catch (err) {
+    console.error("❌ Error fetching products:", err);
+  }
 }
 
-// Requiere node-fetch para usar fetch en Node.js
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+// ➕ Add a new product (avoids duplicates)
+async function addProduct() {
+  rl.question("📦 Product name: ", name => {
+    rl.question("💲 Price: ", async priceInput => {
+      const price = parseFloat(priceInput);
 
-
-// Función POST
-function crearProducto(producto) {
-  return fetch(URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(producto)
-  })
-    .then(res => res.json())
-    .then(data => console.log("✅ Producto creado:", data))
-    .catch(err => console.error("❌ Error al crear producto:", err));
-}
-
-// Función que evita duplicados
-function crearProductoUnico(producto) {
-  fetch(URL)
-    .then(res => res.json())
-    .then(productos => {
-      const existe = productos.some(p =>
-        p.nombre.toLowerCase() === producto.nombre.toLowerCase() &&
-        p.precio === producto.precio
-      );
-
-      if (!existe) {
-        crearProducto(producto);
-      } else {
-        console.log("⚠️ Producto ya existe. No se agregó.");
+      if (!name || isNaN(price)) {
+        console.log("❌ Invalid input.");
+        showMenu();
+        return;
       }
-    })
-    .catch(err => console.error("❌ Error al verificar duplicado:", err));
+
+      try {
+        const res = await fetch(URL);
+        const products = await res.json();
+
+        // Check if product already exists
+        const exists = products.some(p =>
+          p.name.toLowerCase() === name.toLowerCase() && p.price === price
+        );
+
+        if (exists) {
+          console.log("⚠️ Product already exists. It was not added.");
+        } else {
+          const newProduct = { name, price };
+          const create = await fetch(URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newProduct)
+          });
+          const result = await create.json();
+          console.log("✅ Product added:", result);
+        }
+      } catch (err) {
+        console.error("❌ Error adding product:", err);
+      }
+      showMenu();
+    });
+  });
 }
 
-// Llamada de prueba
-crearProductoUnico({ nombre: "Monitor", precio: 200 });
+// 🔄 Update a product by ID
+async function updateProduct() {
+  rl.question("🆔 ID of the product to update: ", id => {
+    rl.question("📦 New name: ", name => {
+      rl.question("💲 New price: ", async priceInput => {
+        const price = parseFloat(priceInput);
 
-// Cierra el script automáticamente después de 3 segundos
-setTimeout(() => process.exit(0), 3000);
+        if (!id || !name || isNaN(price)) {
+          console.log("❌ Invalid input.");
+          showMenu();
+          return;
+        }
 
+        try {
+          const res = await fetch(`${URL}/${id}`);
+          if (!res.ok) {
+            console.log("❌ Product not found.");
+            showMenu();
+            return;
+          }
 
+          const update = await fetch(`${URL}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, price })
+          });
 
-// PUT: actualizar producto
-function actualizarProducto(id, nuevosDatos) {
-  fetch(`${URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(nuevosDatos)
-  })
-    .then(res => res.json())
-    .then(data => console.log("🛠 Producto actualizado:", data))
-    .catch(err => console.error("❌ Error al actualizar producto:", err));
+          const result = await update.json();
+          console.log("✅ Product updated:", result);
+        } catch (err) {
+          console.error("❌ Error updating product:", err);
+        }
+        showMenu();
+      });
+    });
+  });
 }
 
-// DELETE: eliminar producto
-function eliminarProducto(id) {
-  fetch(`${URL}/${id}`, {
-    method: "DELETE"
-  })
-    .then(() => console.log(`🗑 Producto con ID ${id} eliminado.`))
-    .catch(err => console.error("❌ Error al eliminar producto:", err));
+// ❌ Delete a product by ID
+async function deleteProduct() {
+  rl.question("🆔 ID of the product to delete: ", async id => {
+    try {
+      const remove = await fetch(`${URL}/${id}`, { method: "DELETE" });
+
+      if (remove.ok) {
+        console.log("🗑 Product deleted successfully.");
+      } else {
+        console.log("❌ Product not found.");
+      }
+    } catch (err) {
+      console.error("❌ Error deleting product:", err);
+    }
+    showMenu();
+  });
 }
 
-//Obtener productos ordenados
-function obtenerProductosOrdenados() {
-  fetch(URL + "?_sort=nombre&_order=asc")
-    .then(res => res.json())
-    .then(data => console.log("🔍 Productos ordenados:", data));
+// 📜 Display main menu and handle user choices
+function showMenu() {
+  console.log("\n📚 MAIN MENU");
+  console.log("1. View products");
+  console.log("2. Add product");
+  console.log("3. Update product");
+  console.log("4. Delete product");
+  console.log("0. Exit");
+
+  rl.question("Select an option: ", async choice => {
+    switch (choice) {
+      case "1":
+        await viewProducts();
+        showMenu();
+        break;
+      case "2":
+        addProduct();
+        break;
+      case "3":
+        updateProduct();
+        break;
+      case "4":
+        deleteProduct();
+        break;
+      case "0":
+        console.log("👋 Goodbye!");
+        rl.close();
+        process.exit(0);
+        break;
+      default:
+        console.log("❌ Invalid option.");
+        showMenu();
+        break;
+    }
+  });
 }
 
+// 🧠 Setup readline interface
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-// 🧪 PRUEBAS
-obtenerProductos();
-crearProductoUnico({ nombre: "Tarjeta Grafica RTX 3060", precio: 300 });
-actualizarProducto(2, { nombre: "Mouse Logitech", precio: 30 });
-eliminarProducto(1);
+// ▶️ Start the program
+showMenu();
