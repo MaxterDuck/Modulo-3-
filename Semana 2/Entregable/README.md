@@ -46,7 +46,9 @@ Install JSON Server globally with the following command:
 🚀 How to run the project step-by-step
 ## Step 1: Go to the project folder
 From the terminal (Ubuntu, WSL, or CMD on Windows):
+
 cd ~/Modulo_3/Semana_2
+
 Make sure you're in the folder where db.json and the scripts are located.
 
 ## Step 2: Start the server
