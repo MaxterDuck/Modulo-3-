@@ -92,6 +92,7 @@ fs.writeFile('db.json', JSON.stringify(initialData, null, 2), (err) => {
     console.log("✅ Database successfully reset.");
   }
 });
+```
 
 
 💡 Important Notes
