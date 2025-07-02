@@ -33,8 +33,10 @@ You need to have the following installed:
 1. Node.js and npm
 You can check if you have them with the following command:
 
-""node -v""
-""npm -v""
+node -v
+
+npm -v
+
 If not, download them from: https://nodejs.org/
 
 3. JSON Server
