@@ -53,7 +53,9 @@ Make sure you're in the folder where db.json and the scripts are located.
 
 ## Step 2: Start the server
 Run this command to start the server, using db.json as a mock database:
+
 json-server --watch db.json
+
 🔁 Leave this command running in the terminal so the server stays active.
 
 ## Step 3: Open a new terminal to run scripts
