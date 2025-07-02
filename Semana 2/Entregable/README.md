@@ -75,31 +75,20 @@ This file overwrites the contents of db.json with the base products:
 const fs = require('fs');
 
 const initialData = {
-
   products: [
-  
     { id: 1, name: "Laptop", price: 1200 },
     { id: 2, name: "Mouse", price: 25 },
     { id: 3, name: "Keyboard", price: 45 }
-    
   ]
-  
 };
 
 fs.writeFile('db.json', JSON.stringify(initialData, null, 2), (err) => {
-
   if (err) {
-  
     console.error("❌ Error resetting database:", err);
-    
   } else {
-  
     console.log("✅ Database successfully reset.");
-    
   }
-  
 });
-
 This is useful if you want to test and start from scratch again.
 
 💡 Important Notes
