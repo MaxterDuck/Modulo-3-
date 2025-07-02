@@ -1,56 +1,113 @@
-README - Proyecto de Gestión de Productos
- Proyecto de Gestión de Productos con JavaScript y JSON Server
-Este proyecto es una práctica del Módulo 3, Semana 3. Aquí aprenderás a simular una API con un servidor local y a
-realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) usando JavaScript moderno con Fetch API.
-Está pensado para personas que están comenzando, por eso se explican todos los pasos desde cero.
- ¿Qué hace este proyecto?
-- Simula un servidor local que contiene productos.
-- Permite leer, crear, actualizar y eliminar productos.
-- Todo se ejecuta con JavaScript puro y usando la terminal.
- Archivos del proyecto
-Modulo_3/Semana_2/
- db.json # Archivo que simula una base de datos (productos)
- gestion_api.js # Script que realiza operaciones CRUD con Fetch API
- reiniciar_db.js # Script que reinicia los datos de la base a los valores originales
- Requisitos previos
-1. Node.js y npm
-Verifica si los tienes con:
-node -v
-npm -v
-Si no los tienes, descárgalos desde: https://nodejs.org/
-2. JSON Server
-Instálalo con:
+# 🛒 Gestión de Productos con JavaScript y JSON Server
+
+Proyecto del **Módulo 3 - Semana 3** donde se implementa una simulación de servidor local con **JSON Server** y se realizan operaciones **CRUD** usando **JavaScript + Fetch API**.
+
+Este README está pensado para quienes están empezando. Aquí encontrarás los pasos detallados para correr el proyecto desde cero.
+
+---
+
+## 📂 Estructura del Proyecto
+
+Modulo_3/
+└── Semana_2/
+├── db.json # Simula la base de datos de productos
+├── gestion_api.js # Script con operaciones CRUD
+└── reiniciar_db.js # Reinicia la base de datos a los valores originales
+
+yaml
+Copy
+Edit
+
+---
+
+## ✅ ¿Qué hace este proyecto?
+
+- Crea un servidor local simulado con productos.
+- Permite leer, agregar, editar y eliminar productos con JavaScript.
+- Usa Fetch API para comunicarse con el servidor (JSON Server).
+
+---
+
+## 🔧 Requisitos
+
+Asegúrate de tener instalados:
+
+- **Node.js y npm**  
+  Puedes verificarlo con:
+  ```bash
+  node -v
+  npm -v
+JSON Server (global):
+
+bash
+Copy
+Edit
 npm install -g json-server
- Cómo ejecutar el proyecto paso a paso
-1. Entra a la carpeta del proyecto:
+🚀 Cómo usar el proyecto
+1️⃣ Abre la terminal y navega al proyecto
+bash
+Copy
+Edit
 cd ~/Modulo_3/Semana_2
-2. Inicia el servidor:
+2️⃣ Inicia el servidor JSON Server
+bash
+Copy
+Edit
 json-server --watch db.json
-(Deja esta terminal abierta mientras trabajas)
-3. Abre una nueva terminal para correr los scripts:
-- Ejecuta las operaciones CRUD:
+Esto crea un servidor local que puedes visitar en el navegador en:
+
+bash
+Copy
+Edit
+http://localhost:3000/productos
+3️⃣ Abre otra terminal para ejecutar los scripts
+Ejecutar las operaciones CRUD:
+bash
+Copy
+Edit
 node gestion_api.js
-- Reinicia los datos a los originales:
+Reiniciar los datos originales:
+bash
+Copy
+Edit
 node reiniciar_db.js
- Contenido del archivo reiniciar_db.js
-README - Proyecto de Gestión de Productos
+🔄 Contenido del archivo reiniciar_db.js
+Este script sobreescribe db.json con los datos originales:
+
+js
+Copy
+Edit
 const fs = require('fs');
+
 const datosIniciales = {
- productos: [
- { id: 1, nombre: "Laptop", precio: 1200 },
- { id: 2, nombre: "Mouse", precio: 25 },
- { id: 3, nombre: "Teclado", precio: 45 }
- ]
+  productos: [
+    { id: 1, nombre: "Laptop", precio: 1200 },
+    { id: 2, nombre: "Mouse", precio: 25 },
+    { id: 3, nombre: "Teclado", precio: 45 }
+  ]
 };
+
 fs.writeFile('db.json', JSON.stringify(datosIniciales, null, 2), (err) => {
- if (err) {
- console.error(" Error al reiniciar la base de datos:", err);
- } else {
- console.log(" Base de datos reiniciada exitosamente.");
- }
+  if (err) {
+    console.error("❌ Error al reiniciar la base de datos:", err);
+  } else {
+    console.log("✅ Base de datos reiniciada exitosamente.");
+  }
 });
- Notas importantes
-- No cierres la terminal donde está corriendo json-server.
-- Puedes abrir http://localhost:3000/productos en tu navegador para ver los productos.
-- Puedes editar db.json o reiniciarlo cuando lo necesites.
-¡Listo! Ya tienes un entorno completo de práctica para consumir APIs locales y manipular datos usando JavaScript.
+💡 Consejos importantes
+No cierres la terminal donde corre el servidor (json-server).
+
+Puedes usar http://localhost:3000/productos para ver los datos en JSON.
+
+Si dañas la base de datos haciendo pruebas, simplemente corre reiniciar_db.js.
+
+🧪 ¿Qué se practica con este proyecto?
+Uso de fetch() para hacer solicitudes HTTP (GET, POST, PUT, DELETE)
+
+Manejo de errores y validación de datos en JavaScript
+
+Interacción con servidores simulados
+
+Buenas prácticas para organizar un proyecto de JS + API
+
+¡Listo! Ya tienes un entorno completo para practicar el consumo de APIs y manipulación de datos. 🚀
