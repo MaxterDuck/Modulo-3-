@@ -39,24 +39,19 @@ You can check if you have them with the following command:
 
 If not, download them from: https://nodejs.org/
 
-3. JSON Server
-Install JSON Server globally with the following command:
-
-""npm install -g json-server""
-
-🚀 How to run the project step-by-step
-Step 1: Go to the project folder
-From the terminal (Ubuntu, WSL, or CMD on Windows):
-
-cd ~/Modulo_3/Semana_2
-
-Make sure you're in the folder where db.json and the scripts are located.
-
 Step 2: Start the server
 Run this command to start the server, using db.json as a mock database:
 ""json-server --watch db.json""
 
 🔁 Leave this command running in the terminal so the server stays active.
+
+
+3. JSON Server
+Install JSON Server globally with the following command:
+
+""npm install -g json-server""
+
+
 
 Step 3: Open a new terminal to run scripts
 While the server is running, open a new terminal and go to the same project folder.
