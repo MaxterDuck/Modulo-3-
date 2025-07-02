@@ -18,9 +18,6 @@ Modulo_3/
 
 └── reiniciar_db.js # Reinicia la base de datos a los valores originales
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -43,45 +40,32 @@ Puedes verificarlo con:
 ```bash
 node -v
 npm -v
+
 JSON Server
 Instala JSON Server globalmente con:
-
-bash
-Copy
-Edit
 npm install -g json-server
+
 🚀 Cómo usar el proyecto
 1️⃣ Abre la terminal y navega al proyecto
-bash
-Copy
-Edit
 cd ~/Modulo_3/Semana_2
+
 2️⃣ Inicia el servidor JSON Server
-bash
-Copy
-Edit
 json-server --watch db.json
 Esto crea un servidor local que puedes visitar en el navegador:
-
-http://localhost:3000/productos
+http://localhost:3000/productos **Ejemplo Puede que esta te lleve a otro puerto** 
 
 3️⃣ Abre otra terminal para ejecutar los scripts
+
 Ejecutar operaciones CRUD
-bash
-Copy
-Edit
 node gestion_api.js
+
 Reiniciar los datos a los valores originales
-bash
-Copy
-Edit
 node reiniciar_db.js
+
 🔄 Contenido del archivo reiniciar_db.js
 Este script sobreescribe db.json con los datos originales:
 
-js
-Copy
-Edit
+
 const fs = require('fs');
 
 const datosIniciales = {
