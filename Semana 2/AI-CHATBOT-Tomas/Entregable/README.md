@@ -9,9 +9,13 @@ Este README está pensado para quienes están empezando. Aquí encontrarás los 
 ## 📂 Estructura del Proyecto
 
 Modulo_3/
+
 └── Semana_2/
+
 ├── db.json # Simula la base de datos de productos
+
 ├── gestion_api.js # Script con operaciones CRUD
+
 └── reiniciar_db.js # Reinicia la base de datos a los valores originales
 
 yaml
