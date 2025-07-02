@@ -31,17 +31,18 @@ You need to have the following installed:
 
 ## 1. Node.js and npm
 You can check if you have them with the following command:
+```js
+node -v
 
-"node -v"
-
-"npm -v"
-
+npm -v
+```
 If not, download them from: https://nodejs.org/
 
 ## 2. JSON Server
 Install JSON Server globally with the following command:
-
-""npm install -g json-server""
+```js
+npm install -g json-server
+```
 
 🚀 How to run the project step-by-step
 ## Step 1: Go to the project folder
@@ -53,8 +54,9 @@ Make sure you're in the folder where db.json and the scripts are located.
 
 ## Step 2: Start the server
 Run this command to start the server, using db.json as a mock database:
-
+```js
 json-server --watch db.json
+```
 
 🔁 Leave this command running in the terminal so the server stays active.
 
@@ -64,15 +66,16 @@ While the server is running, open a new terminal and go to the same project fold
 From that terminal, you can run the following scripts:
 
 ## Manage products (view, add, edit, delete):(Command)
+```js
 node gestion_api.js
-
+```
 ## Reset the database to original products: (Command)
+```js
 node reset_db.js
-
+```
 ## 📄 Content of reset_db.js
 This file overwrites the contents of db.json with the base products:
 
-const fs = require('fs');
 
 ```js
 const fs = require('fs');
