@@ -102,12 +102,5 @@ Puedes abrir http://localhost:3000/productos en tu navegador para ver los datos 
 
 Si haces pruebas que dañan la base, puedes correr reiniciar_db.js para restaurarla.
 
-🧪 ¿Qué se practica con este proyecto?
-Uso de fetch() para hacer solicitudes HTTP (GET, POST, PUT, DELETE)
 
-Manejo de errores y validación de datos en JavaScript
-
-Interacción con servidores simulados
-
-Buenas prácticas para organizar un proyecto de JS + API
 
