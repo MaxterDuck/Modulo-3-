@@ -1,23 +1,33 @@
 # 🛠️ Product Management Project – Módulo 3, Semana 3
 
-This repository contains a basic **product management system**, created as part of **Module 3 – Week 3** training. The goal is to practice **CRUD operations** (Create, Read, Update, Delete) both in the terminal and through a browser interface using **modern JavaScript** and **JSON Server**.
+This repository contains a basic **product management system**,
+created as part of **Module 3 – Week 3** training.
+The goal is to practice **CRUD operations** (Create, Read, Update, Delete) both in the terminal and through a browser interface using **modern JavaScript** and **JSON Server**.
 
 ---
 
 ## 📁 Project Structure
 
 Entrenamiento M3S3/
+
 │
 ├── db.json
+
 │ └── Simulated database containing product data.
 │
+
 ├── management_api.js
+
 │ └── CLI script for managing products via the terminal.
+
 │
 ├── reset_db.js
+
 │ └── Resets db.json to its original product list.
+
 │
 └── index.html
+
 └── Web interface to view, add, and delete products.
 
 
