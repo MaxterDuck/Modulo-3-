@@ -43,6 +43,7 @@ Entrenamiento M3S3/
 - Install **JSON Server** globally:
   ```bash
   npm install -g json-server
+  
 🚀 How to Run the Project
 
 **1. Clone the repository and enter the folder:**
@@ -54,7 +55,7 @@ cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
 
 **2. Install local dependencies (like node-fetch):**
 
-``` npm install ```
+```npm install ```
 
 
 **3. Start JSON Server:**
