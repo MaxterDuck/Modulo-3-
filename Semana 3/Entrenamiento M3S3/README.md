@@ -8,6 +8,7 @@ Este repositorio contiene un pequeño proyecto de **gestión de productos**, cre
 
 Entrenamiento M3S3/
 │
+
 ├── db.json
 
 │ └── Simula la base de datos con productos (utilizado por JSON Server).
