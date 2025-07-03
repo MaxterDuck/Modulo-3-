@@ -1,123 +1,99 @@
 # 🛠️ Product Management Project – Módulo 3, Semana 3
 
-Este repositorio contiene un pequeño proyecto de **gestión de productos**, creado como parte del **Módulo 3 – Semana 3** del entrenamiento. El propósito es practicar **operaciones CRUD** en la terminal y con una interfaz web usando **JavaScript moderno** y **JSON Server**.
+This repository contains a basic **product management system**, created as part of **Module 3 – Week 3** training. The goal is to practice **CRUD operations** (Create, Read, Update, Delete) both in the terminal and through a browser interface using **modern JavaScript** and **JSON Server**.
 
 ---
 
-## 📂 Estructura del proyecto
+## 📁 Project Structure
 
 Entrenamiento M3S3/
 │
-
-
-├
-── db.json
-
-│ └── Simula la base de datos con productos (utilizado por JSON Server).
+├── db.json
+│ └── Simulated database containing product data.
 │
-
 ├── management_api.js
-
-│ └── Script de consola para ver, agregar, actualizar y eliminar productos.
+│ └── CLI script for managing products via the terminal.
 │
-├
-── reset_db.js
-
-│ └── Reinicia db.json a su estado original.
+├── reset_db.js
+│ └── Resets db.json to its original product list.
 │
-└
-── 
-index.html
-
-└── Interfaz web para gestionar productos desde el navegador.
+└── index.html
+└── Web interface to view, add, and delete products.
 
 
 ---
 
-## 🧩 Requisitos
+## 🔧 Requirements
 
-- **Node.js** (incluye npm)
-- Instalación global de **JSON Server**
+- **Node.js** and **npm**
+- Install **JSON Server** globally:
   ```bash
   npm install -g json-server
-🚀 Cómo ejecutar el proyecto
-Clona el repositorio y accede al directorio:
+🚀 How to Run the Project
 
-bash
-Copiar
-Editar
-git clone https://github.com/MaxterDuck/Modulo-3-/tree/main/Semana%203/Entrenamiento%20M3S3.git
-cd "Entrenamiento M3S3"
-Instala dependencias locales (incluyendo node-fetch):
+**1. Clone the repository and enter the folder:
 
-bash
-Copiar
-Editar
-npm install
-Inicia JSON Server para crear la API REST:
+git clone https://github.com/MaxterDuck/Modulo-3-
 
-bash
-Copiar
-Editar
-json-server --watch db.json --port 3000
-Mantén esta terminal abierta.
+cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
 
-Abre otra terminal y ejecuta el script de consola:
+**3. Install local dependencies (like node-fetch):
 
+```js npm install
+```
+
+**4. Start JSON Server:
+```js json-server --watch db.json --port 3000
+```
+Keep this terminal open while working.
+
+5. Open another terminal and run the CLI:
 bash
 Copiar
 Editar
 node management_api.js
-Podrás seleccionar opciones para ver, agregar, actualizar y eliminar productos.
+Use the menu to view, add, update, or delete products.
 
-O usa la interfaz web:
+6. Open the web interface:
+Open index.html in your browser.
 
-Abre index.html en tu navegador.
+You can view the current products and manage them visually.
 
-Podrás ver, agregar y eliminar productos visualmente.
-
-Para reiniciar la base de datos:
-
+6. To reset the product list:
 bash
 Copiar
 Editar
 node reset_db.js
-Esto restablece db.json a los productos originales.
+This restores db.json to its original values.
 
-📄 Detalles de cada archivo
-Archivo	Función
-db.json	Base de datos simulada (JSON) con la colección products.
-management_api.js	CLI para gestionar productos mediante CRUD.
-reset_db.js	Restaura db.json a un estado inicial predefinido.
-index.html	Frontend en HTML/JS para gestionar productos desde el navegador.
+📄 File Descriptions
+File	Description
+db.json	Simulated database using a products array.
+management_api.js	JavaScript CLI with a menu to perform CRUD operations via terminal.
+reset_db.js	Resets db.json to original products.
+index.html	Visual interface to manage products (add/delete).
 
-✔️ Uso paso a paso
-Levanta la API con JSON Server.
-
-Usa la terminal para interacciones CLI.
-
-O abre index.html para hacerlo visualmente.
-
-Dentro de management_api.js, sigue el menú:
-
-markdown
+🧠 CLI Menu Example
+bash
 Copiar
 Editar
+📚 MAIN MENU
 1. View products
 2. Add product
 3. Update product
 4. Delete product
 0. Exit
-💡 Buenas prácticas
-Asegúrate de tener node_modules/ en tu .gitignore.
+💡 Tips
+Do not upload node_modules/ to GitHub. Add this line to your .gitignore:
 
-No cierres la terminal donde corre JSON Server.
+Copiar
+Editar
+node_modules/
+You can view product data directly in your browser at:
+http://localhost:3000/products
 
-Cada vez que hagas cambios en db.json, reinicia con reset_db.js o recarga.
+Whenever you manually edit db.json, save and refresh to apply changes.
 
-📌 Personalización
-Si deseas traducir todo al inglés (como se muestra en el HTML y el CLI), simplemente cambia:
-
-products, name, price en db.json y scripts.
-
-Etiquetas y mensajes en los archivos .js y index.html.
+🏁 Ready to go!
+You can now manage products from the terminal or your browser.
+Perfect for practicing JavaScript, REST APIs, and JSON Server integration.
