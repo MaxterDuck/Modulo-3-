@@ -53,8 +53,7 @@ cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
 
 **2. Install local dependencies (like node-fetch):**
 
-```js npm install
-```
+``` npm install ```
 
 **3. Start JSON Server:**
 ```js json-server --watch db.json --port 3000
@@ -62,8 +61,8 @@ cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
 Keep this terminal open while working.
 
 **4. Open another terminal and run the CLI:**
-```jsnode management_api.js
-```
+```jsnode management_api.js```
+
 Use the menu to view, add, update, or delete products.
 
 **5. Open the web interface:**
@@ -72,8 +71,8 @@ Open index.html in your browser.
 You can view the current products and manage them visually.
 
 **6. To reset the product list:**
-```jsnode reset_db.js
-```
+```jsnode reset_db.js```
+
 This restores db.json to its original values.
 
 📄 File Descriptions
