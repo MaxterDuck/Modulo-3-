@@ -25,7 +25,8 @@ Entrenamiento M3S3/
 
 │ └── Reinicia db.json a su estado original.
 │
-└── index.html
+└
+── index.html
 
 └── Interfaz web para gestionar productos desde el navegador.
 
