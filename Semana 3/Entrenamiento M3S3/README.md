@@ -1,121 +1,109 @@
-# 🛠️ Product Management Project – Módulo 3, Semana 3
-
-This repository contains a basic **product management system**,
-created as part of **Module 3 – Week 3** training.
-The goal is to practice **CRUD operations** (Create, Read, Update, Delete) both in the terminal and through a browser interface using **modern JavaScript** and **JSON Server**.
+# 🛒 Product Management Project with JavaScript and JSON Server
+In this project, you’ll learn how to simulate an API using a local server and perform CRUD operations (Create, Read, Update, Delete) using modern JavaScript with the Fetch API.
+It’s designed for beginners, so all steps are explained from scratch.
 
 ---
 
-## 📁 Project Structure
+## 📦 What does this project do?
+- Simulates a local server that stores product data.
 
-Entrenamiento M3S3/
+- Allows you to read, create, update, and delete products.
 
-│
-├
-── db.json
-
-│ └── Simulated database containing product data.
-│
-
-├
-── management_api.js
-
-│ └── CLI script for managing products via the terminal.
-
-│
-├
-── reset_db.js
-
-│ └── Resets db.json to its original product list.
-
-│
-└
-── index.html
-
-└── Web interface to view, add, and delete products.
-
+- Everything runs with plain JavaScript and the terminal.
 
 ---
 
-## 🔧 Requirements
+## 📁 Project Files
+Modulo_3/
 
-- **Node.js** and **npm**
-- Install **JSON Server** globally:
-  ```bash
-  npm install -g json-server
-  
-🚀 How to Run the Project
+└── Semana_2/
 
-**1. Clone the repository and enter the folder:**
-
-git clone https://github.com/MaxterDuck/Modulo-3-
-
-cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
-
-
-**2. Install local dependencies (like node-fetch):**
-
-```npm install ```
-
-
-**3. Start JSON Server:**
-```js json-server --watch db.json --port 3000```
-
-Keep this terminal open while working.
-
-
-**4. Open another terminal and run the CLI:**
-```jsnode management_api.js```
-
-Use the menu to view, add, update, or delete products.
-
-**5. Open the web interface:**
-Open index.html in your browser.
-
-You can view the current products and manage them visually.
-
-
-**6. To reset the product list:**
-```jsnode reset_db.js```
-
-This restores db.json to its original values.
-
-📄 File Descriptions
-
-File	Description
-
-db.json	Simulated database using a products array.
-
-management_api.js	JavaScript CLI with a menu to perform CRUD operations via terminal.
-
-reset_db.js	Resets db.json to original products.
-
-index.html	Visual interface to manage products (add/delete).
-
-🧠 CLI Menu Example
-
-📚 MAIN MENU
-1. View products
+ ├── db.json – File that simulates a database (products)
  
-2. Add product
+ ├── gestion_api.js – Script that performs CRUD operations using Fetch API
  
-3. Update product
+ └── reset_db.js – Script that resets the database to original values
 
-4. Delete product
+---
 
-0. Exit
+## 🔧 Prerequisites
+You need to have the following installed:
 
-💡 Tips
+## 1. Node.js and npm
+You can check if you have them with the following command:
+```js
+node -v
 
-Do not upload node_modules/ to GitHub. Add this line to your .gitignore:
+npm -v
+```
+If not, download them from: https://nodejs.org/
+
+## 2. JSON Server
+Install JSON Server globally with the following command:
+```js
+npm install -g json-server
+```
+
+🚀 How to run the project step-by-step
+## Step 1: Go to the project folder
+From the terminal (Ubuntu, WSL, or CMD on Windows):
+
+cd ~/Modulo_3/Semana_2
+
+Make sure you're in the folder where db.json and the scripts are located.
+
+## Step 2: Start the server
+Run this command to start the server, using db.json as a mock database:
+```js
+json-server --watch db.json
+```
+
+🔁 Leave this command running in the terminal so the server stays active.
+
+## Step 3: Open a new terminal to run scripts
+While the server is running, open a new terminal and go to the same project folder.
+
+From that terminal, you can run the following scripts:
+
+## Manage products (view, add, edit, delete):(Command)
+```js
+node gestion_api.js
+```
+## Reset the database to original products: (Command)
+```js
+node reset_db.js
+```
+## 📄 Content of reset_db.js
+This file overwrites the contents of db.json with the base products:
 
 
+```js
+const fs = require('fs');
 
-node_modules/
+const initialData = {
+  products: [
+    { id: 1, name: "Laptop", price: 1200 },
+    { id: 2, name: "Mouse", price: 25 },
+    { id: 3, name: "Keyboard", price: 45 }
+  ]
+};
 
-You can view product data directly in your browser at:
+fs.writeFile('db.json', JSON.stringify(initialData, null, 2), (err) => {
+  if (err) {
+    console.error("❌ Error resetting database:", err);
+  } else {
+    console.log("✅ Database successfully reset.");
+  }
+});
+```
 
-http://localhost:3000/products
 
-Whenever you manually edit db.json, save and refresh to apply changes.
+💡 Important Notes Do not close the terminal where json-server is running.
+
+You can visit http://localhost:3000/products in your browser to view products in JSON format.
+
+Or in case its port is not port 3000 you would have to change it to your port Every time you manually edit 
+
+db.json, save the file and update your browser to see the changes.
+
 
