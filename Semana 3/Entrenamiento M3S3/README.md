@@ -45,52 +45,50 @@ Entrenamiento M3S3/
   npm install -g json-server
 🚀 How to Run the Project
 
-**1. Clone the repository and enter the folder:
+**1. Clone the repository and enter the folder:**
 
 git clone https://github.com/MaxterDuck/Modulo-3-
 
 cd "Modulo-3-/Semana 3/Entrenamiento M3S3"
 
-**3. Install local dependencies (like node-fetch):
+**2. Install local dependencies (like node-fetch):**
 
 ```js npm install
 ```
 
-**4. Start JSON Server:
+**3. Start JSON Server:**
 ```js json-server --watch db.json --port 3000
 ```
 Keep this terminal open while working.
 
-5. Open another terminal and run the CLI:
-bash
-Copiar
-Editar
-node management_api.js
+**4. Open another terminal and run the CLI:**
+```jsnode management_api.js
+```
 Use the menu to view, add, update, or delete products.
 
-6. Open the web interface:
+**5. Open the web interface:**
 Open index.html in your browser.
 
 You can view the current products and manage them visually.
 
-6. To reset the product list:
-bash
-Copiar
-Editar
-node reset_db.js
+**6. To reset the product list:**
+```jsnode reset_db.js
+```
 This restores db.json to its original values.
 
 📄 File Descriptions
 File	Description
+
 db.json	Simulated database using a products array.
+
 management_api.js	JavaScript CLI with a menu to perform CRUD operations via terminal.
+
 reset_db.js	Resets db.json to original products.
+
 index.html	Visual interface to manage products (add/delete).
 
 🧠 CLI Menu Example
-bash
-Copiar
-Editar
+
 📚 MAIN MENU
 1. View products
 2. Add product
