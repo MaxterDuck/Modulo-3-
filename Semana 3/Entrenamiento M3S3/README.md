@@ -11,22 +11,26 @@ The goal is to practice **CRUD operations** (Create, Read, Update, Delete) both 
 Entrenamiento M3S3/
 
 │
-├── db.json
+├
+── db.json
 
 │ └── Simulated database containing product data.
 │
 
-├── management_api.js
+├
+── management_api.js
 
 │ └── CLI script for managing products via the terminal.
 
 │
-├── reset_db.js
+├
+── reset_db.js
 
 │ └── Resets db.json to its original product list.
 
 │
-└── index.html
+└
+── index.html
 
 └── Web interface to view, add, and delete products.
 
