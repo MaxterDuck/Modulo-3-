@@ -77,6 +77,7 @@ You can view the current products and manage them visually.
 This restores db.json to its original values.
 
 📄 File Descriptions
+
 File	Description
 
 db.json	Simulated database using a products array.
@@ -91,21 +92,26 @@ index.html	Visual interface to manage products (add/delete).
 
 📚 MAIN MENU
 1. View products
+ 
 2. Add product
+ 
 3. Update product
+
 4. Delete product
+
 0. Exit
+
 💡 Tips
+
 Do not upload node_modules/ to GitHub. Add this line to your .gitignore:
 
-Copiar
-Editar
+
+
 node_modules/
+
 You can view product data directly in your browser at:
+
 http://localhost:3000/products
 
 Whenever you manually edit db.json, save and refresh to apply changes.
 
-🏁 Ready to go!
-You can now manage products from the terminal or your browser.
-Perfect for practicing JavaScript, REST APIs, and JSON Server integration.
