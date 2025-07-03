@@ -9,20 +9,22 @@ Este repositorio contiene un pequeño proyecto de **gestión de productos**, cre
 Entrenamiento M3S3/
 │
 ├── db.json
+
 │ └── Simula la base de datos con productos (utilizado por JSON Server).
 │
+
 ├── management_api.js
+
 │ └── Script de consola para ver, agregar, actualizar y eliminar productos.
 │
 ├── reset_db.js
+
 │ └── Reinicia db.json a su estado original.
 │
 └── index.html
+
 └── Interfaz web para gestionar productos desde el navegador.
 
-yaml
-Copiar
-Editar
 
 ---
 
