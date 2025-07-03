@@ -20,7 +20,8 @@ Entrenamiento M3S3/
 
 │ └── Script de consola para ver, agregar, actualizar y eliminar productos.
 │
-├── reset_db.js
+├
+── reset_db.js
 
 │ └── Reinicia db.json a su estado original.
 │
