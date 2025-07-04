@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: aqua;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 40px;
+}   
+
+.hero {
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgb(17, 114, 224);
+    max-width: 600px;
+    margin: auto;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: rgb(17, 114, 224);
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  text-decoration:solid;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
