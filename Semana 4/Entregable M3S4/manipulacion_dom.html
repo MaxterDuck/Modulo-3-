@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widion: 12th=device-width, initial-scale=1.0">
+    <title>User Registration - M3S4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <button type="button" id="saveButton">Save Data</button>
+        <button type="button" id="clearButton">Clear Data</button>
+    </form>
+
+    <!-- Session interaction counter -->
+    <div id="interactionCount"></div>
+
+    <!-- Display of registered users -->
+    <div id="output"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
