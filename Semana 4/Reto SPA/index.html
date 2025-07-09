@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD OPERATIONS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      display: flex;
+      background: #f9f9f9;
+    }
+    aside {
+      width: 250px;
+      background: #f4ede5;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+    aside h1 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: purple;
+      margin-bottom: 2rem;
+    }
+    aside img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .profile p {
+      margin: 0.3rem 0;
+    }
+    .profile .role {
+      color: purple;
+    }
+    nav ul {
+      list-style: none;
+    }
+    nav ul li {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    nav ul li.active {
+      background: #6e00ff;
+      color: white;
+      border-radius: 5px;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .user-list {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 0.5rem 0;
+    }
+    .user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .user-info {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      align-items: center;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .add-user-btn {
+      background: #6e00ff;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    .form-popup input {
+      margin-bottom: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <h1>CRUD OPERATIONS</h1>
+    <div class="profile">
+      <img src="./src/imgs/ImgProfille.jpg" alt="Profile">
+      <p>Tomas Restrepo</p>
+      <p class="role">Admin</p>
+    </div>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Course</li>
+        <li class="active">Users</li>
+        <li>Payment</li>
+        <li>Report</li>
+        <li>Settings</li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <div class="topbar">
+      <h2>Students List</h2>
+      <button class="add-user-btn" onclick="openForm()">Add New Student</button>
+    </div>
+    <div class="user-list" id="userList"></div>
+  </main>
+
+  <div class="form-popup" id="userForm">
+    <input type="text" id="name" placeholder="Nombre Completo">
+    <input type="email" id="email" placeholder="correo@ejemplo.com">
+    <input type="tel" id="phone" placeholder="1234567890">
+    <input type="text" id="enrollNumber" placeholder="12345678901234">
+    <input type="text" id="dateOfAdmission" placeholder="08-Dec-2021">
+    <button onclick="addUser()">Add</button>
+    <button onclick="closeForm()">Cancel</button>
+  </div>
+
+  <script>
+    const users = [];
+
+    function renderUsers() {
+      const list = document.getElementById('userList');
+      list.innerHTML = '';
+      users.forEach(user => {
+        const div = document.createElement('div');
+        div.className = 'user';
+        div.innerHTML = `
+          <div class="user-info">
+            <img src="https://via.placeholder.com/50" alt="User">
+            <div>${user.name}</div>
+            <div>${user.email}</div>
+            <div>${user.phone}</div>
+            <div>${user.enrollNumber}</div>
+            <div>${user.dateOfAdmission}</div>
+          </div>
+          <div class="actions">
+            <button onclick="deleteUser(${user.id})">🗑️</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function openForm() {
+      document.getElementById('userForm').style.display = 'block';
+    }
+
+    function closeForm() {
+      document.getElementById('userForm').style.display = 'none';
+    }
+
+    function addUser() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const enrollNumber = document.getElementById('enrollNumber').value;
+      const dateOfAdmission = document.getElementById('dateOfAdmission').value;
+
+      if (users.some(u => u.email === email)) {
+        alert('Usuario ya existe');
+        return;
+      }
+
+      const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        phone,
+        enrollNumber,
+        dateOfAdmission
+      };
+      users.push(newUser);
+      renderUsers();
+      closeForm();
+    }
+
+    function deleteUser(id) {
+      const index = users.findIndex(user => user.id === id);
+      if (index !== -1) {
+        users.splice(index, 1);
+        renderUsers();
+      }
+    }
+
+    // Initialize with sample
+    users.push({
+      id: 1,
+      name: "Karthi",
+      email: "karthi@gmmail.com",
+      phone: "7305477760",
+      enrollNumber: "1234567305477760",
+      dateOfAdmission: "08-Dec-2021"
+    });
+    renderUsers();
+  </script>
+</body>
+</html>
