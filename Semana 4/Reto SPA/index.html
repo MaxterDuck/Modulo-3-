@@ -179,7 +179,16 @@
   </div>
 
   <script>
-    const users = [];
+    let users = [];
+
+    function loadUsers() {
+      const stored = localStorage.getItem('users');
+      users = stored ? JSON.parse(stored) : [];
+    }
+
+    function saveUsers() {
+      localStorage.setItem('users', JSON.stringify(users));
+    }
 
     function renderUsers() {
       const list = document.getElementById('userList');
@@ -243,6 +252,7 @@
         users.push({ id: Date.now(), name, email, phone, enrollNumber, dateOfAdmission });
       }
 
+      saveUsers();
       renderUsers();
       closeForm();
     }
@@ -251,6 +261,7 @@
       const index = users.findIndex(user => user.id === id);
       if (index !== -1) {
         users.splice(index, 1);
+        saveUsers();
         renderUsers();
       }
     }
@@ -268,15 +279,8 @@
       }
     }
 
-    // Inicializar con un usuario de ejemplo
-    users.push({
-      id: 1,
-      name: "Karthi",
-      email: "karthi@gmmail.com",
-      phone: "7305477760",
-      enrollNumber: "1234567305477760",
-      dateOfAdmission: "08-Dec-2021"
-    });
+    // Cargar y mostrar usuarios al iniciar
+    loadUsers();
     renderUsers();
   </script>
 </body>
