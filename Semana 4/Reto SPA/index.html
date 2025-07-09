@@ -134,7 +134,7 @@
     <h1>CRUD OPERATIONS</h1>
     <div class="profile">
       <img src="./src/imgs/ImgProfille.jpg" alt="Profile">
-      <p>Random guy</p>
+      <p>Tomas Restepo</p>
       <p class="role">Admin</p>
     </div>
     <nav>
@@ -192,6 +192,7 @@
 
     function renderUsers() {
       const list = document.getElementById('userList');
+      if (!list) return;
       list.innerHTML = '';
       users.forEach(user => {
         const div = document.createElement('div');
@@ -226,16 +227,48 @@
       document.getElementById('userForm').style.display = 'none';
     }
 
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validatePhone(phone) {
+      return /^\d{10,15}$/.test(phone);
+    }
+
     function saveUser() {
       const id = document.getElementById('editId').value;
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const enrollNumber = document.getElementById('enrollNumber').value;
-      const dateOfAdmission = document.getElementById('dateOfAdmission').value;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const enrollNumber = document.getElementById('enrollNumber').value.trim();
+      const dateOfAdmission = document.getElementById('dateOfAdmission').value.trim();
 
       if (!name || !email || !phone || !enrollNumber || !dateOfAdmission) {
         alert('Todos los campos son obligatorios');
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        alert('Correo inválido');
+        return;
+      }
+
+      if (!validatePhone(phone)) {
+        alert('Teléfono inválido (10-15 dígitos)');
+        return;
+      }
+
+      const isDuplicate = users.some(u =>
+        u.name === name &&
+        u.email === email &&
+        u.phone === phone &&
+        u.enrollNumber === enrollNumber &&
+        u.dateOfAdmission === dateOfAdmission &&
+        u.id != id
+      );
+
+      if (isDuplicate) {
+        alert('Ya existe un usuario con esos datos');
         return;
       }
 
@@ -245,10 +278,6 @@
           users[index] = { id: parseInt(id), name, email, phone, enrollNumber, dateOfAdmission };
         }
       } else {
-        if (users.some(u => u.email === email)) {
-          alert('Usuario ya existe');
-          return;
-        }
         users.push({ id: Date.now(), name, email, phone, enrollNumber, dateOfAdmission });
       }
 
@@ -279,7 +308,6 @@
       }
     }
 
-    // Cargar y mostrar usuarios al iniciar
     loadUsers();
     renderUsers();
   </script>
