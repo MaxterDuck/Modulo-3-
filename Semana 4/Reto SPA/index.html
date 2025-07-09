@@ -69,37 +69,6 @@
       align-items: center;
       margin-bottom: 1rem;
     }
-    .user-list {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .user {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #eee;
-      padding: 0.5rem 0;
-    }
-    .user img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .user-info {
-      display: flex;
-      gap: 1rem;
-      flex: 1;
-      align-items: center;
-    }
-    .actions button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
     .add-user-btn {
       background: #6e00ff;
       color: white;
@@ -107,6 +76,39 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
       cursor: pointer;
+    }
+    .user-list {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .user-list-header, .user {
+      display: grid;
+      grid-template-columns: 60px 1fr 1fr 1fr 1fr 1fr 80px;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+    .user-list-header {
+      background: #f5f5f5;
+      font-weight: bold;
+      color: #999;
+    }
+    .user:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+    .user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #6e00ff;
+      margin-right: 0.5rem;
     }
     .form-popup {
       display: none;
@@ -131,8 +133,8 @@
   <aside>
     <h1>CRUD OPERATIONS</h1>
     <div class="profile">
-      <img src="./src/imgs/ImgProfille.jpg" alt="Profile">
-      <p>Tomas Restrepo</p>
+      <img src="https://via.placeholder.com/100" alt="Profile">
+      <p>Random guy</p>
       <p class="role">Admin</p>
     </div>
     <nav>
@@ -151,16 +153,28 @@
       <h2>Students List</h2>
       <button class="add-user-btn" onclick="openForm()">Add New Student</button>
     </div>
-    <div class="user-list" id="userList"></div>
+    <div class="user-list">
+      <div class="user-list-header">
+        <div></div>
+        <div>Name</div>
+        <div>Email</div>
+        <div>Phone</div>
+        <div>Enroll Number</div>
+        <div>Date of admission</div>
+        <div></div>
+      </div>
+      <div id="userList"></div>
+    </div>
   </main>
 
   <div class="form-popup" id="userForm">
+    <input type="hidden" id="editId">
     <input type="text" id="name" placeholder="Nombre Completo">
     <input type="email" id="email" placeholder="correo@ejemplo.com">
     <input type="tel" id="phone" placeholder="1234567890">
     <input type="text" id="enrollNumber" placeholder="12345678901234">
     <input type="text" id="dateOfAdmission" placeholder="08-Dec-2021">
-    <button onclick="addUser()">Add</button>
+    <button onclick="saveUser()">Save</button>
     <button onclick="closeForm()">Cancel</button>
   </div>
 
@@ -174,15 +188,14 @@
         const div = document.createElement('div');
         div.className = 'user';
         div.innerHTML = `
-          <div class="user-info">
-            <img src="https://via.placeholder.com/50" alt="User">
-            <div>${user.name}</div>
-            <div>${user.email}</div>
-            <div>${user.phone}</div>
-            <div>${user.enrollNumber}</div>
-            <div>${user.dateOfAdmission}</div>
-          </div>
+          <img src="https://via.placeholder.com/50" alt="User">
+          <div>${user.name}</div>
+          <div>${user.email}</div>
+          <div>${user.phone}</div>
+          <div>${user.enrollNumber}</div>
+          <div>${user.dateOfAdmission}</div>
           <div class="actions">
+            <button onclick="editUser(${user.id})">✏️</button>
             <button onclick="deleteUser(${user.id})">🗑️</button>
           </div>
         `;
@@ -191,6 +204,12 @@
     }
 
     function openForm() {
+      document.getElementById('editId').value = '';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('enrollNumber').value = '';
+      document.getElementById('dateOfAdmission').value = '';
       document.getElementById('userForm').style.display = 'block';
     }
 
@@ -198,27 +217,32 @@
       document.getElementById('userForm').style.display = 'none';
     }
 
-    function addUser() {
+    function saveUser() {
+      const id = document.getElementById('editId').value;
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const phone = document.getElementById('phone').value;
       const enrollNumber = document.getElementById('enrollNumber').value;
       const dateOfAdmission = document.getElementById('dateOfAdmission').value;
 
-      if (users.some(u => u.email === email)) {
-        alert('Usuario ya existe');
+      if (!name || !email || !phone || !enrollNumber || !dateOfAdmission) {
+        alert('Todos los campos son obligatorios');
         return;
       }
 
-      const newUser = {
-        id: Date.now(),
-        name,
-        email,
-        phone,
-        enrollNumber,
-        dateOfAdmission
-      };
-      users.push(newUser);
+      if (id) {
+        const index = users.findIndex(u => u.id == id);
+        if (index !== -1) {
+          users[index] = { id: parseInt(id), name, email, phone, enrollNumber, dateOfAdmission };
+        }
+      } else {
+        if (users.some(u => u.email === email)) {
+          alert('Usuario ya existe');
+          return;
+        }
+        users.push({ id: Date.now(), name, email, phone, enrollNumber, dateOfAdmission });
+      }
+
       renderUsers();
       closeForm();
     }
@@ -231,7 +255,20 @@
       }
     }
 
-    // Initialize with sample
+    function editUser(id) {
+      const user = users.find(u => u.id === id);
+      if (user) {
+        document.getElementById('editId').value = user.id;
+        document.getElementById('name').value = user.name;
+        document.getElementById('email').value = user.email;
+        document.getElementById('phone').value = user.phone;
+        document.getElementById('enrollNumber').value = user.enrollNumber;
+        document.getElementById('dateOfAdmission').value = user.dateOfAdmission;
+        document.getElementById('userForm').style.display = 'block';
+      }
+    }
+
+    // Inicializar con un usuario de ejemplo
     users.push({
       id: 1,
       name: "Karthi",
